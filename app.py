@@ -17,9 +17,8 @@ def index():
     if request.is_json:
         req = request.get_json()
         json_data = twitter_search(str(req['search']))
-        json_data = json.dumps(json_data)
         print(json_data)
         return json_data
 
 if __name__ == '__main__':
-    app.run(threaded=True, port=5000, debug=True)
+    app.run(threaded=True, port=5000)

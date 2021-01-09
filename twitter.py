@@ -20,7 +20,7 @@ def twitter_search(search):
     df_list = []
     for tweet in Cursor(api.search, q=search, tweet_mode="extended").items(1000):
         temp_dict = {}
-        temp_dict['id'] = tweet.id
+        temp_dict['id'] = tweet.id_str
         temp_dict['created_at'] = tweet.created_at
         temp_dict['full_text'] = tweet.full_text
         temp_dict['retweet_count'] = tweet.retweet_count
@@ -47,6 +47,9 @@ def twitter_search(search):
     id_max_pos = df.iloc[idx_max_pos]['id']
     id_max_neg = df.iloc[idx_max_neg]['id']
     id_max_retweets = df.iloc[idx_max_retweets]['id']
+    full_text_pos = df.iloc[idx_max_pos]['full_text']
+    full_text_neg = df.iloc[idx_max_neg]['full_text']
+    full_text_retweets = df.iloc[idx_max_retweets]['full_text']
 
     dates = df.groupby('date').count().reset_index()['date']
     dates = list(dates.apply(lambda x: x.strftime("%d/%m/%Y")))
@@ -86,7 +89,10 @@ def twitter_search(search):
         'tweets': {
             'id_max_pos': id_max_pos,
             'id_max_neg': id_max_neg,
-            'id_max_retweets': id_max_retweets
+            'id_max_retweets': id_max_retweets,
+            'full_text_pos': full_text_pos,
+            'full_text_neg': full_text_neg,
+            'full_text_retweets': full_text_retweets
             }
         }
 
