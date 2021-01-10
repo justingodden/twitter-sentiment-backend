@@ -9,14 +9,23 @@ from transformers import pipeline
 
 import json
 
+classifier = pipeline('sentiment-analysis')
+
+auth = tweepy.OAuthHandler(api_key, api_secret_key)
+api = tweepy.API(auth)
+
+class NpEncoder(json.JSONEncoder):
+    def default(self, obj):
+        if isinstance(obj, np.integer):
+            return int(obj)
+        elif isinstance(obj, np.floating):
+            return float(obj)
+        elif isinstance(obj, np.ndarray):
+            return obj.tolist()
+        else:
+            return super(NpEncoder, self).default(obj)
+
 def twitter_search(search):
-    classifier = pipeline('sentiment-analysis')
-
-
-    auth = tweepy.OAuthHandler(api_key, api_secret_key)
-    api = tweepy.API(auth)
-
-
     df_list = []
     for tweet in Cursor(api.search, q=search, tweet_mode="extended").items(1000):
         temp_dict = {}
@@ -95,17 +104,6 @@ def twitter_search(search):
             'full_text_retweets': full_text_retweets
             }
         }
-
-    class NpEncoder(json.JSONEncoder):
-        def default(self, obj):
-            if isinstance(obj, np.integer):
-                return int(obj)
-            elif isinstance(obj, np.floating):
-                return float(obj)
-            elif isinstance(obj, np.ndarray):
-                return obj.tolist()
-            else:
-                return super(NpEncoder, self).default(obj)
 
     json_data = json.dumps(dict_data, cls=NpEncoder)
 

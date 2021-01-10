@@ -14,11 +14,13 @@ app.config['CORS_HEADERS'] = 'Content-Type'
 
 @app.route('/', methods=['POST'])
 def index():
-    if request.is_json:
-        req = request.get_json()
-        json_data = twitter_search(str(req['search']))
-        print(json_data)
-        return json_data
+    try:
+        if request.is_json:
+            req = request.get_json()
+            json_data = twitter_search(str(req['search']))
+            return json_data
+    except:
+        print("Something went wrong")
 
 if __name__ == '__main__':
-    app.run(threaded=True, port=5000)
+    app.run(threaded=True, port=5000, debug=True)
