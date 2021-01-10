@@ -10,6 +10,7 @@ itsdangerous==1.1.0
 Jinja2==2.11.2
 joblib==1.0.0
 MarkupSafe==1.1.1
+nltk==3.5
 numpy==1.19.5
 oauthlib==3.1.0
 packaging==20.8
@@ -25,7 +26,6 @@ sacremoses==0.0.43
 six==1.15.0
 tokenizers==0.9.4
 tqdm==4.55.1
-transformers==4.1.1
 tweepy==3.10.0
 urllib3==1.26.2
 Werkzeug==1.0.1
