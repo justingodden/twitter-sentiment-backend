@@ -3,7 +3,7 @@ Twitter sentiment analysis app backend
 
 The app provides a dash board which can give a weeks analysis of the the public sentiment of your search-term, according to twitter.
 
-It is able to run on either HuggingFace's Transformers package, and NLTK's Vader algorithm. The [deployed version](https://justingodden.github.io/twitter-sentiment-frontend/) uses Vades, as Transformers are too large for the free tier of Heroku.
+It is able to run on either HuggingFace's Transformers package, and NLTK's Vader algorithm. The [deployed version](https://justingodden.github.io/twitter-sentiment-frontend/) uses Vader, as Transformers' filesize are too large for the free tier on Heroku.
 
 The classifier is wrapped in a Flask web application, providing an API end-point for the [front-end interface](https://github.com/justingodden/twitter-sentiment-frontend).
 
