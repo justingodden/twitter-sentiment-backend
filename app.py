@@ -3,7 +3,8 @@
 import json
 from flask import Flask, request, jsonify
 from flask_cors import CORS
-from twitter import twitter_search
+from twitter_vader import twitter_search
+# from twitter_transformer import twitter_search
 
 
 app = Flask(__name__)
@@ -23,4 +24,4 @@ def index():
         print("Something went wrong")
 
 if __name__ == '__main__':
-    app.run(threaded=True, port=5000, debug=True)
+    app.run(threaded=True, port=5000)
