@@ -1,7 +1,7 @@
 # Sentient - backend API and ML
 Twitter sentiment analysis app backend
 
-The app provides a dash board which can give a weeks analysis of the the public sentiment of your search-term, according to twitter.
+The app provides a dashboard which can give a weeks analysis of the the public sentiment of your search-term, according to Twitter.
 
 It is able to run on either HuggingFace's Transformers package, and NLTK's Vader algorithm. The [deployed version](https://justingodden.github.io/twitter-sentiment-frontend/) uses Vader, as Transformers' filesize are too large for the free tier on Heroku.
 
