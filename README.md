@@ -1,5 +1,5 @@
 # Sentient - backend API and ML
-Twitter sentiment analysis app backend
+Twitter sentiment analysis app backend, hosted on Heroku.
 
 The app provides a dashboard which can give a weeks analysis of the the public sentiment of your search-term, according to Twitter.
 
